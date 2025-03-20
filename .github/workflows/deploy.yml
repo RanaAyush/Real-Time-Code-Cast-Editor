@@ -53,6 +53,8 @@ jobs:
 
       - name: Extract Files
         run: |
+          rm -rf code-cast-client
+          rm -rf code-cast-server
           tar -xzf deploy-package.tar.gz -C /home/ubuntu/
 
       - name: Create .env Files
