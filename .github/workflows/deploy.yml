@@ -1,0 +1,51 @@
+name: Deploy Code-Casting App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs: 
+  deploy: 
+    runs-on: self-hosted
+
+    steps: 
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: set up node js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name:  install client
+        run: |
+          cd code-cast-client
+          npm install
+          npm run build
+
+      - name:  install backend
+        run: |
+          cd code-cast-server
+          npm install
+
+      - name: create env files
+        run: |
+          echo "NEXT_PUBLIC_BACKEND_URL=http://localhost:5000" >> code-cast-client/.env
+          echo "PORT=5000" >> code-cast-server/.env
+          echo "JODDLE_CLIENT_ID=867880fde36abf314e22980b8c644342" >> code-cast-server/.env
+          echo "JODDLE_CLIENT_SECRET=2008a722550be6caf2afeddfe3ccd5b4fac5c2abb5ee544cba187d9e59150b07" >> code-cast-server/.env
+
+      - name: Restart Backend with PM2
+        run: |
+          cd code-cast-server
+          pm2 stop backend || true
+          pm2 start index.js --name backend
+
+      - name: Restart Frontend with PM2
+        run: |
+          cd code-cast-client
+          pm2 stop client || true
+          pm2 start "npm start" --name client
+
+      
+       
