@@ -14,7 +14,7 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
-        origin:'http://localhost:3000',
+        origin:'http://44.201.188.201:3000',
         methods:['GET','POST'],
     }
 });
