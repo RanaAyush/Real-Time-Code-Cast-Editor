@@ -31,7 +31,7 @@ jobs:
 
       - name: Archive Production Files
         run: |
-          tar -czf deploy-package.tar.gz code-cast-client/.next code-cast-client/public code-cast-client/package.json code-cast-client/node_modules \
+          tar -czf deploy-package.tar.gz code-cast-client/.next code-cast-client/package.json code-cast-client/node_modules \
                                       code-cast-server/index.js code-cast-server/package.json code-cast-server/node_modules
 
       - name: Upload Build Artifacts
