@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use GitHub-hosted runner
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -41,7 +41,7 @@ jobs:
           path: deploy-package.tar.gz
 
   deploy:
-    runs-on: self-hosted  # Runs directly on your EC2 instance
+    runs-on: self-hosted # Runs directly on your EC2 instance
     needs: build
 
     steps:
