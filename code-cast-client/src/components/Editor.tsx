@@ -1,6 +1,9 @@
 "use client"
 
 import { useEffect, useRef } from 'react';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/dracula.css';
+
 
 // Define an interface for our editor reference to avoid TypeScript errors
 interface CodeMirrorEditor {
@@ -26,8 +29,6 @@ export default function  Editor({socketRef,roomId,onCodeChange}:any) {
       try {
         // Dynamically import CodeMirror and its dependencies
         const CodeMirror = (await import('codemirror')).default;
-        await import('codemirror/lib/codemirror.css');
-        await import('codemirror/theme/dracula.css');
         await import('codemirror/mode/javascript/javascript');
         await import('codemirror/addon/edit/closetag');
         await import('codemirror/addon/edit/closebrackets');
