@@ -45,8 +45,8 @@ export default function CastingRoom() {
 
   const router = useRouter();
 
-  const handleError = (e: any) => {
-    console.log("scoket error", e);
+  const handleError = () => {
+    // console.log("scoket error", err);
     toast.error("socket error");
     router.push('/')
   }
@@ -54,8 +54,8 @@ export default function CastingRoom() {
   useEffect(() => {
     const init = async () => {
       socketRef.current = await initSocket();
-      socketRef.current.on('connect_error', (err) => { handleError(err) });
-      socketRef.current.on('connect_failed', (err) => { handleError(err) });
+      socketRef.current.on('connect_error', (err) => { handleError() });
+      socketRef.current.on('connect_failed', (err) => { handleError() });
       socketRef.current.emit('join', {
         id,
         userName
