@@ -99,7 +99,7 @@ export default function CastingRoom() {
   const runCode = async () => {
     setIsCompiling(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/compile", {
+      const response = await axios.post("http://44.201.188.201:5000/api/compile", {
         code: codeRef.current,
         language: selectedLanguage,
       });

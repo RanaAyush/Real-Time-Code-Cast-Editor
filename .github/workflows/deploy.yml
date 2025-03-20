@@ -59,7 +59,7 @@ jobs:
 
       - name: Create .env Files
         run: |
-          echo "NEXT_PUBLIC_BACKEND_URL=http://localhost:5000" > /home/ubuntu/code-cast-client/.env
+          echo "NEXT_PUBLIC_BACKEND_URL=http://44.201.188.201:5000" > /home/ubuntu/code-cast-client/.env
           echo "PORT=5000" > /home/ubuntu/code-cast-server/.env
           echo "JODDLE_CLIENT_ID=867880fde36abf314e22980b8c644342" >> /home/ubuntu/code-cast-server/.env
           echo "JODDLE_CLIENT_SECRET=2008a722550be6caf2afeddfe3ccd5b4fac5c2abb5ee544cba187d9e59150b07" >> /home/ubuntu/code-cast-server/.env
